@@ -45,66 +45,66 @@ api.interceptors.response.use(
 // Jobs API
 export const jobsAPI = {
   // Get all jobs with optional filters
-  getAll: (params = {}) => api.get('/jobs', { params }),
+  getAll: (params = {}) => api.get(`${API_BASE_URL}/jobs`, { params }),
   
   // Search jobs
-  search: (query, params = {}) => api.get('/jobs/search', { 
+  search: (query, params = {}) => api.get(`${API_BASE_URL}/jobs/search`, { 
     params: { q: query, ...params } 
   }),
   
   // Get single job
-  getById: (id) => api.get(`/jobs/${id}`),
+  getById: (id) => api.get(`${API_BASE_URL}/jobs/${id}`),
   
   // Create new job
-  create: (jobData) => api.post('/jobs', jobData),
+  create: (jobData) => api.post(`${API_BASE_URL}/jobs`, jobData),
   
   // Update job
-  update: (id, jobData) => api.put(`/jobs/${id}`, jobData),
+  update: (id, jobData) => api.put(`${API_BASE_URL}/jobs/${id}`, jobData),
   
   // Delete job
-  delete: (id) => api.delete(`/jobs/${id}`),
+  delete: (id) => api.delete(`${API_BASE_URL}/jobs/${id}`),
   
   // Get job statistics
-  getStats: () => api.get('/jobs/stats/count'),
+  getStats: () => api.get(`${API_BASE_URL}/jobs/stats/count`),
 };
 
 // Employers API
 export const employersAPI = {
   // Get all employers
-  getAll: (params = {}) => api.get('/employers', { params }),
+  getAll: (params = {}) => api.get(`${API_BASE_URL}/employers`, { params }),
   
   // Get single employer
-  getById: (id) => api.get(`/employers/${id}`),
+  getById: (id) => api.get(`${API_BASE_URL}/employers/${id}`),
   
   // Get jobs by employer
-  getJobs: (id, params = {}) => api.get(`/employers/${id}/jobs`, { params }),
+  getJobs: (id, params = {}) => api.get(`${API_BASE_URL}/employers/${id}/jobs`, { params }),
   
   // Create new employer
-  create: (employerData) => api.post('/employers', employerData),
+  create: (employerData) => api.post(`${API_BASE_URL}/employers`, employerData),
   
   // Update employer
-  update: (id, employerData) => api.put(`/employers/${id}`, employerData),
+  update: (id, employerData) => api.put(`${API_BASE_URL}/employers/${id}`, employerData),
   
   // Delete employer
-  delete: (id) => api.delete(`/employers/${id}`),
+  delete: (id) => api.delete(`${API_BASE_URL}/employers/${id}`),
   
   // Get employer statistics
-  getStats: () => api.get('/employers/stats/count'),
+  getStats: () => api.get(`${API_BASE_URL}/employers/stats/count`),
 };
 
 // Categories API
 export const categoriesAPI = {
   // Get all categories with counts
-  getAll: () => api.get('/categories'),
+  getAll: () => api.get(`${API_BASE_URL}/categories`),
   
   // Get jobs by category
   getJobs: (categoryName, params = {}) => 
-    api.get(`/categories/${categoryName}/jobs`, { params }),
+    api.get(`${API_BASE_URL}/categories/${categoryName}/jobs`, { params }),
 };
 
 // Health check
 export const healthAPI = {
-  check: () => api.get('/health'),
+  check: () => api.get(`${API_BASE_URL}/health`),
 };
 
 export default api;
