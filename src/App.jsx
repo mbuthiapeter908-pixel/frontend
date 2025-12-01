@@ -8,6 +8,8 @@ import Jobs from './pages/Jobs';
 import JobDetails from './pages/JobDetails';
 import Employers from './pages/Employers';
 import Dashboard from './pages/Dashboard';
+import ApplyModal from "./components/Applications/ApplyModal";
+
 import './index.css';
 function App() {
   const { isLoaded, isSignedIn } = useUser();
@@ -32,6 +34,7 @@ function App() {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
           <Route path="/employers" element={<Employers />} />
+           <Route path="/apply/:jobId" element={<ApplyModal />} />
           {isSignedIn && <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
       </main>
