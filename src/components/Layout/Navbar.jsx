@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Briefcase, Menu, X, Sparkles, Rocket } from 'lucide-react';
+import { Briefcase, Menu, X, Sparkles, Rocket, MessageSquare } from 'lucide-react';
 import AuthButtons from '../Auth/AuthButtons';
 import Button from '../UI/Button';
 
@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: 'Home', href: '/', icon: <Sparkles className="h-4 w-4" /> },
     { name: 'Jobs', href: '/jobs', icon: <Briefcase className="h-4 w-4" /> },
     { name: 'Employers', href: '/employers', icon: <Rocket className="h-4 w-4" /> },
+    { name: 'Contact', href: '/contact', icon: <MessageSquare className="h-4 w-4" /> }, 
   ];
 
   const isActive = (path) => location.pathname === path;

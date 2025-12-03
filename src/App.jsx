@@ -9,6 +9,7 @@ import JobDetails from './pages/JobDetails';
 import Employers from './pages/Employers';
 import Dashboard from './pages/Dashboard';
 import ApplyModal from "./components/Applications/ApplyModal";
+import Contact from './pages/Contact';
 
 import './index.css';
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/jobs/:id" element={<JobDetails />} />
           <Route path="/employers" element={<Employers />} />
            <Route path="/apply/:jobId" element={<ApplyModal />} />
+           <Route path="/contact" element={<Contact />} />
           {isSignedIn && <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
       </main>
