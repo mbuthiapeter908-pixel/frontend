@@ -1,52 +1,59 @@
-import React from 'react';
-import { SignedIn, SignedOut, SignInButton, UserButton, SignUpButton } from '@clerk/clerk-react';
+import React, { useState } from 'react';
+import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
+import CustomSignIn from './CustomSignIn';
+import CustomSignUp from './CustomSignUp';
 import Button from '../UI/Button';
 
 const AuthButtons = () => {
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+
   return (
-    <div className="flex items-center gap-3">
-      <SignedOut>
-        <div className="flex items-center gap-3">
-          <SignInButton mode="modal">
+    <>
+      <div className="flex items-center gap-4">
+        <SignedOut>
+          <div className="flex items-center gap-3">
             <Button 
               variant="ghost" 
               size="sm"
-              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-semibold"
+              onClick={() => setShowSignIn(true)}
             >
               Sign In
             </Button>
-          </SignInButton>
-          <SignUpButton mode="modal">
             <Button 
               variant="primary" 
               size="sm"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg hover:shadow-xl"
+              onClick={() => setShowSignUp(true)}
             >
               Get Started
             </Button>
-          </SignUpButton>
-        </div>
-      </SignedOut>
-      <SignedIn>
-        <div className="flex items-center gap-4">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            onClick={() => window.location.href = '/dashboard'}
-            className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
-          >
-            Dashboard
-          </Button>
-          <UserButton 
-            appearance={{
-              elements: {
-                avatarBox: "w-10 h-10 border-2 border-blue-200 shadow-sm hover:shadow-md transition-shadow"
-              }
-            }}
-          />
-        </div>
-      </SignedIn>
-    </div>
+          </div>
+        </SignedOut>
+        <SignedIn>
+          <div className="flex items-center gap-4">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => window.location.href = '/dashboard'}
+            >
+              Dashboard
+            </Button>
+            <UserButton 
+              appearance={{
+                elements: {
+                  avatarBox: "w-10 h-10 border-2 border-blue-200 rounded-xl",
+                  userButtonPopoverCard: "rounded-2xl border border-gray-200 shadow-2xl"
+                }
+              }}
+            />
+          </div>
+        </SignedIn>
+      </div>
+
+      {/* Custom Modals */}
+      {showSignIn && <CustomSignIn onClose={() => setShowSignIn(false)} />}
+      {showSignUp && <CustomSignUp onClose={() => setShowSignUp(false)} />}
+    </>
   );
 };
 
